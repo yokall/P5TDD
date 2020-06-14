@@ -1,0 +1,17 @@
+{
+  "name": "p5jstesting",
+  "version": "1.0.0",
+  "description": "P5js unit testing tutorial",
+  "main": "sketch.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
