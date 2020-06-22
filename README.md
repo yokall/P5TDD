@@ -23,3 +23,7 @@ Initialise node project
 Install Chai locally
 
 `npm install --save-dev chai`
+
+Install NYC locally
+
+`npm install --save-dev nyc`
