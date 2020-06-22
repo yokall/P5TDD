@@ -21,29 +21,9 @@ function setup() {
 }
 
 function draw() {
-    fill(fillColor);
+    fill(colorIncreaser.fillColor);
     rect(0, 0, 500, 500);
-
-    // increment the red value
-    fillColor.levels[0] += colorValueIncrease;
-
-    // if the red value is maxed out, increment the green value and reset the red value
-    if (fillColor.levels[0] > 255) {
-        fillColor.levels[1] += colorValueIncrease;
-        fillColor.levels[0] = 0;
-    }
-
-    // If the green value is maxed out increment the blue value
-    // and reset the green value.
-    if (fillColor.levels[1] > 255) {
-        fillColor.levels[2] += colorValueIncrease;
-        fillColor.levels[1] = 0;
-    }
-
-    // If the blue value is maxed out reset the green value.
-    if (fillColor.levels[2] > 255) {
-        fillColor.levels[2] = 0;
-    }
+    colorIncreaser.increaseFillColor();
 }
 
 class ColorIncreaser {
@@ -52,6 +32,26 @@ class ColorIncreaser {
         // by that value.
         this.colorValueIncrease = colorValueIncrease
         this.fillColor = fillColor;
+    }
+
+    increaseFillColor() {
+        // increase the first color channel by one.  If that channel
+        // is now > 255 then increment the next color channel.  Repeat for second
+        // and third channel
+        this.fillColor.levels[0] += this.colorValueIncrease
+        this.numColorsSoFar += 1
+
+        if (this.fillColor.levels[0] > 255) {
+            this.fillColor.levels[0] = 0
+            this.fillColor.levels[1] += this.colorValueIncrease
+        }
+        if (this.fillColor.levels[1] > 255) {
+            this.fillColor.levels[1] = 0
+            this.fillColor.levels[2] += this.colorValueIncrease
+        }
+        if (this.fillColor.levels[2] > 255) {
+            this.fillColor.levels[2] = 0;
+        }
     }
 }
 

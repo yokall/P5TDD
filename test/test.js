@@ -42,4 +42,39 @@ describe('ColorIncreaser tests', function () {
         expect(colorIncreaser.fillColor.levels[3]).to.equal(255);
         done();
     });
+
+    it('should have rgb values 255, 0, 0 after calling increaseFillColor 255 times', function (done) {
+        //it is 256^1 - 1 because it starts with the color black
+        for (let count = 0; count < 255; count += 1) {
+            colorIncreaser.increaseFillColor()
+        }
+        expect(colorIncreaser.fillColor.levels[0]).to.equal(255)
+        expect(colorIncreaser.fillColor.levels[1]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[2]).to.equal(0)
+        done();
+    });
+
+
+    it('should have rgb values 255, 255, 0 after calling increaseFillColor 65535 times', function (done) {
+        //it is 256^2 - 1 because it starts with the color black
+        for (let count = 0; count < 65535; count += 1) {
+            colorIncreaser.increaseFillColor()
+        }
+        expect(colorIncreaser.fillColor.levels[0]).to.equal(255)
+        expect(colorIncreaser.fillColor.levels[1]).to.equal(255)
+        expect(colorIncreaser.fillColor.levels[2]).to.equal(0)
+        done();
+    });
+
+
+    it('should have rgb values 255, 255, 255 after calling increaseFillColor 16777215 times', function (done) {
+        //it is 256^3 - 1 because it starts with the color black
+        for (let count = 0; count < 16777215; count += 1) {
+            colorIncreaser.increaseFillColor()
+        }
+        expect(colorIncreaser.fillColor.levels[0]).to.equal(255)
+        expect(colorIncreaser.fillColor.levels[1]).to.equal(255)
+        expect(colorIncreaser.fillColor.levels[2]).to.equal(255)
+        done();
+    });
 });
