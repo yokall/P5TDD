@@ -17,7 +17,7 @@ function setup() {
     fillColor = color(0, 0, 0, 255);
     noStroke();
 
-    colorIncreaser = new ColorIncreaser(colorValueIncrease);
+    colorIncreaser = new ColorIncreaser(colorValueIncrease, fillColor);
 }
 
 function draw() {
@@ -47,10 +47,11 @@ function draw() {
 }
 
 class ColorIncreaser {
-    constructor(colorValueIncrease) {
+    constructor(colorValueIncrease, fillColor) {
         // Stores a value and a color and allows you to increase the color
         // by that value.
         this.colorValueIncrease = colorValueIncrease
+        this.fillColor = fillColor;
     }
 }
 

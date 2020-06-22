@@ -6,6 +6,15 @@ const expect = require('chai').expect;
 // Import our ColorIncreaser class.
 const ColorIncreaser = require('../sketch');
 
+function mockColor(red, green, blue, alpha) {
+    // Mock of the color class from p5
+    this.levels = [];
+    this.levels[0] = red;
+    this.levels[1] = green;
+    this.levels[2] = blue;
+    this.levels[3] = alpha;
+}
+
 describe('ColorIncreaser tests', function () {
     // Will hold the reference to the ColorIncreaser class
     let colorIncreaser;
@@ -16,7 +25,8 @@ describe('ColorIncreaser tests', function () {
     // beforeEach lets you setup the objects you want to test in an easy fashion.
     beforeEach(function () {
         let colorValueIncrease = 1;
-        colorIncreaser = new ColorIncreaser(colorValueIncrease);
+        let fillColor = new mockColor(0, 0, 0, 255);
+        colorIncreaser = new ColorIncreaser(colorValueIncrease, fillColor);
     });
 
     it('should be an object', function (done) {
@@ -26,6 +36,10 @@ describe('ColorIncreaser tests', function () {
 
     it('should store initial values without mutation', function (done) {
         expect(colorIncreaser.colorValueIncrease).to.be.equal(1);
+        expect(colorIncreaser.fillColor.levels[0]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[1]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[2]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[3]).to.equal(255);
         done();
     });
 });
