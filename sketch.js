@@ -16,6 +16,8 @@ function setup() {
     background(0);
     fillColor = color(0, 0, 0, 255);
     noStroke();
+
+    colorIncreaser = new ColorIncreaser(colorValueIncrease);
 }
 
 function draw() {
@@ -42,5 +44,14 @@ function draw() {
     if (fillColor.levels[2] > 255) {
         fillColor.levels[2] = 0;
     }
-
 }
+
+class ColorIncreaser {
+    constructor(colorValueIncrease) {
+        // Stores a value and a color and allows you to increase the color
+        // by that value.
+        this.colorValueIncrease = colorValueIncrease
+    }
+}
+
+module.exports = ColorIncreaser;
