@@ -4,7 +4,7 @@
 // You can check out the full documentation at http://chaijs.com/api/bdd/
 const expect = require('chai').expect;
 // Import our ColorIncreaser class.
-const ColorIncreaser = require('../sketch');
+const ColorIncreaser = require('../ColorIncreaser');
 
 function mockColor(red, green, blue, alpha) {
     // Mock of the color class from p5
@@ -75,6 +75,18 @@ describe('ColorIncreaser tests', function () {
         expect(colorIncreaser.fillColor.levels[0]).to.equal(255)
         expect(colorIncreaser.fillColor.levels[1]).to.equal(255)
         expect(colorIncreaser.fillColor.levels[2]).to.equal(255)
+        done();
+    });
+
+
+    it('should have rgb values 0, 0, 0 after calling increaseFillColor 16777216 times', function (done) {
+        //it is 256^3 because it starts with the color black
+        for (let count = 0; count < 16777216; count += 1) {
+            colorIncreaser.increaseFillColor()
+        }
+        expect(colorIncreaser.fillColor.levels[0]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[1]).to.equal(0)
+        expect(colorIncreaser.fillColor.levels[2]).to.equal(0)
         done();
     });
 });
