@@ -1,5 +1,7 @@
 # P5js Testing
 
+![](https://github.com/yokall/P5TDD/workflows/Nodejs%20CI/badge.svg)
+
 To understand how to go about testing p5js projects, working through https://p5js.org/learn/tdd.html
 
 ## Setup
